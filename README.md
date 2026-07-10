@@ -44,15 +44,6 @@ Vizuálna kvalita spracovania aplikácie a štýlovanie je tiež predmetom hodno
       - Responzívne zobrazenie
       - SEO (implementovať og:image a rôzne titles a descriptions na jednotlivých stepoch formuláru)
       - umožniť pridať viacerých darcov- je na vás ako to bude vyzerať
-    
-**Postup odovzdania zadania:**
-
-- Naklonujte si tento repozitár k sebe
-- Umiestnite ho do verejného github / bitbucket repozitáru a svoju prácu priebežne commitujte
-- Do repozitáru udeľte prístup kontu [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) (v prípade súkromného repo na bitbucket) alebo pošlite link na verejné github repo na tento e-mail
-- Ozvite sa [andrea.eckerova@goodrequest.com](mailto:andrea.eckerova@goodrequest.com) a [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) keď je zadanie za vás pripravené na review
-
-Commit messages a spôsob commitovania budú tiež predmetom hodnotenia
 
 **Ak by ste mali hocijaké otázky alebo ste sa niekde zasekli:**
 
