@@ -45,10 +45,6 @@ Vizuálna kvalita spracovania aplikácie a štýlovanie je tiež predmetom hodno
       - SEO (implementovať og:image a rôzne titles a descriptions na jednotlivých stepoch formuláru)
       - umožniť pridať viacerých darcov- je na vás ako to bude vyzerať
 
-**Ak by ste mali hocijaké otázky alebo ste sa niekde zasekli:**
-
-* Kedykoľvek napíšte otázky alebo nás požiadajte o pomoc na [roman.haluska@goodrequest.com](mailto:roman.haluska@goodrequest.com) - radi vám poradíme ;)
-
 # Assignement for Frontend developer - GoodRequest
 
 The goal of the task is to create a simple application in Next.js that serves as a form for the GoodBoy Foundation to support Slovak shelters for dogs.
