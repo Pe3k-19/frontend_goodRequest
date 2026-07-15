@@ -1,14 +1,16 @@
 export const theme = {
   colors: {
-    primary: "#f7941e",
-    primaryDark: "#d97b0a",
-    text: "#171717",
-    textMuted: "#6b7280",
+    primary: "#4F46E5",
+    primaryDark: "#4338CA ",
+    textPrimary: "#111827",
+    textSecondary: "#FAFAFA",
+    textMuted: "#9CA3AF",
     background: "#ffffff",
-    surface: "#f5f5f5",
+    surface: "#F3F4F6",
     border: "#e5e7eb",
     error: "#dc2626",
     success: "#16a34a",
+    icon: "#4B5563",
   },
   radii: {
     sm: "4px",
