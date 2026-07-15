@@ -1,15 +1,16 @@
 "use client";
 
 import styled from "styled-components";
-import { HeroImage } from "./HeroImage";
 import { Footer } from "./Footer";
+import { HeroImage } from "./HeroImage";
+import { ContributionForm } from "../ui/ContributionForm";
 
 export function ContributionPage() {
   return (
     <PageRoot>
       <ContentGrid>
         <FormColumn>
-          {/* ContributionForm */}
+          <ContributionForm />
           <Footer />
         </FormColumn>
         <ImageColumn>
