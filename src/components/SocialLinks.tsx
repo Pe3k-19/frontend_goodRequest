@@ -1,20 +1,18 @@
 "use client";
 
 import Link from "next/link";
-import styled, { useTheme } from "styled-components";
+import styled from "styled-components";
 import { FacebookIcon } from "./icons/FacebookIcon";
 import { InstagramIcon } from "./icons/InstagramIcon";
 
 export function SocialLinks() {
-  const theme = useTheme();
-
   return (
     <SocialLinksRoot aria-label="Sociálne siete">
       <SocialLink href="https://www.facebook.com/" aria-label="Facebook">
-        <FacebookIcon width={20} height={20} color={theme.colors.textPrimary} />
+        <FacebookIcon />
       </SocialLink>
       <SocialLink href="https://www.instagram.com/" aria-label="Instagram">
-        <InstagramIcon width={20} height={20} color={theme.colors.textPrimary} />
+        <InstagramIcon />
       </SocialLink>
     </SocialLinksRoot>
   );
