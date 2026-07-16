@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import styled from "styled-components";
-import { SectionBlock, SectionLabel } from "@/styles/componnets";
+import { FieldError, SectionBlock, SectionLabel } from "@/styles/componnets";
 import { Button } from "./Button";
 
 const PRESET_AMOUNTS = [5, 10, 20, 30, 50, 100] as const;
@@ -10,9 +10,16 @@ const PRESET_AMOUNTS = [5, 10, 20, 30, 50, 100] as const;
 type AmountSectionProps = {
   value: number;
   onChange: (value: number) => void;
+  onBlur?: () => void;
+  error?: string;
 };
 
-export function AmountSection({ value, onChange }: AmountSectionProps) {
+export function AmountSection({
+  value,
+  onChange,
+  onBlur,
+  error,
+}: AmountSectionProps) {
   const [inputValue, setInputValue] = useState(value.toString());
 
   const handleInputChange = (raw: string) => {
@@ -46,13 +53,16 @@ export function AmountSection({ value, onChange }: AmountSectionProps) {
           inputMode="numeric"
           value={inputValue}
           onChange={(event) => handleInputChange(event.target.value)}
+          onBlur={onBlur}
           aria-label="Suma príspevku v eurách"
+          aria-invalid={error ? true : undefined}
         />
         <CurrencySuffix>€</CurrencySuffix>
       </AmountInputWrapper>
       <PresetGrid role="group" aria-label="Predvolené sumy">
         {presetButtons}
       </PresetGrid>
+      <FieldError>{error}</FieldError>
     </SectionBlock>
   );
 }

@@ -43,6 +43,8 @@ export const OptionalTag = styled.span`
 
 export const FieldError = styled.p`
   margin-top: ${({ theme }) => theme.spacing(1)};
+  min-height: 1rem;
   font-size: 0.75rem;
+  line-height: 1rem;
   color: ${({ theme }) => theme.colors.error};
 `;
