@@ -40,3 +40,9 @@ export const OptionalTag = styled.span`
   color: ${({ theme }) => theme.colors.textMuted};
   font-weight: 400;
 `;
+
+export const FieldError = styled.p`
+  margin-top: ${({ theme }) => theme.spacing(1)};
+  font-size: 0.75rem;
+  color: ${({ theme }) => theme.colors.error};
+`;
