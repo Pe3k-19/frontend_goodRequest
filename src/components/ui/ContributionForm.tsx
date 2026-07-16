@@ -12,6 +12,7 @@ import {
 } from "@/lib/validation/contribution";
 import type { ContributionStep } from "@/types/contributions";
 import { FirstStep } from "./FirstStep";
+import { SecondStep } from "./SecondStep";
 
 const defaultValues: ContributionFormValues = {
   helpType: "foundation",
@@ -47,6 +48,13 @@ export function ContributionForm() {
       <FormRoot as="form" noValidate onSubmit={submitStep2}>
         <Stepper currentStep={currentStep} />
         {currentStep === 1 && <FirstStep onContinue={goToStep2} />}
+
+        {currentStep === 2 && (
+          <SecondStep
+            onBack={() => setCurrentStep(1)}
+            onContinue={submitStep2}
+          />
+        )}
       </FormRoot>
     </FormProvider>
   );

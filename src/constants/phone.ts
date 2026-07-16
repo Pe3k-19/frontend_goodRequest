@@ -7,6 +7,6 @@ export const PHONE_COUNTRY_CONFIG = {
   CZ: {
     flag: "🇨🇿",
     dialCode: "+420",
-    placeholder: "+420 123 321 123",
+    placeholder: "+420 123 456 789",
   },
 } as const;

@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Input as AntdInput, Select as AntdSelect, ConfigProvider } from "antd";
 import styled, { useTheme } from "styled-components";
 import { PHONE_COUNTRY_CONFIG } from "@/constants/phone";
@@ -18,9 +18,7 @@ type PhoneInputProps = {
   id: string;
   label: string;
   value: string;
-  country: PhoneCountry;
   onChange: (value: string) => void;
-  onCountryChange: (value: PhoneCountry) => void;
   required?: boolean;
   error?: string;
   onBlur?: () => void;
@@ -30,14 +28,13 @@ export const PhoneInput = ({
   id,
   label,
   value,
-  country,
   onChange,
-  onCountryChange,
   required = true,
   error,
   onBlur,
 }: PhoneInputProps) => {
   const theme = useTheme();
+  const [country, setCountry] = useState<PhoneCountry>("SK");
   const { placeholder } = PHONE_COUNTRY_CONFIG[country];
 
   const phoneTheme = useMemo(
@@ -79,7 +76,7 @@ export const PhoneInput = ({
           <CountrySelect
             value={""}
             prefix={country === "SK" ? <FlagSkIcon /> : <FlagCzIcon />}
-            onChange={(next) => onCountryChange(next as PhoneCountry)}
+            onChange={(next) => setCountry(next as PhoneCountry)}
             options={countryOptions}
             suffixIcon={
               <ArrowDownIcon width={12} height={12} color={theme.colors.icon} />
@@ -104,7 +101,7 @@ export const PhoneInput = ({
           />
         </PhoneInputGroup>
       </ConfigProvider>
-      <FieldError>{error}</FieldError>
+      <FieldError>{`${error ? `${error} ${placeholder}` : ""}`}</FieldError>
     </div>
   );
 };
