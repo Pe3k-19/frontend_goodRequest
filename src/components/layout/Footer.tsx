@@ -5,26 +5,24 @@ import Link from "next/link";
 import styled from "styled-components";
 import { SocialLinks } from "../SocialLinks";
 
-export function Footer() {
-  return (
-    <FooterRoot>
-      <Divider />
-      <BrandGroup>
-        <Image src="/icon.svg" alt="" width={32} height={32} aria-hidden />
-        <BrandName>Good boy</BrandName>
-      </BrandGroup>
+export const Footer = () => (
+  <FooterRoot>
+    <Divider />
+    <BrandGroup>
+      <Image src="/icon.svg" alt="" width={32} height={32} aria-hidden />
+      <BrandName>Good boy</BrandName>
+    </BrandGroup>
 
-      <FooterLinks>
-        <SocialLinks />
+    <FooterLinks>
+      <SocialLinks />
 
-        <NavLinks>
-          <FooterLink href="/contact">Kontakt</FooterLink>
-          <FooterLink href="/about">O projekte</FooterLink>
-        </NavLinks>
-      </FooterLinks>
-    </FooterRoot>
-  );
-}
+      <NavLinks>
+        <FooterLink href="/contact">Kontakt</FooterLink>
+        <FooterLink href="/about">O projekte</FooterLink>
+      </NavLinks>
+    </FooterLinks>
+  </FooterRoot>
+);
 
 const FooterRoot = styled.footer`
   display: flex;
@@ -32,7 +30,7 @@ const FooterRoot = styled.footer`
   align-items: center;
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing(4)};
-  padding-top: ${({ theme }) => theme.spacing(8)};
+  padding: ${({ theme }) => theme.spacing(8)} 0;
   margin-top: auto;
 `;
 

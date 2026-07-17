@@ -24,8 +24,8 @@ export function ContributionPage() {
 const PageRoot = styled.main`
   flex: 1;
   display: flex;
-  flex-direction: column;
   min-height: 100vh;
+  flex-direction: column;
   background: ${({ theme }) => theme.colors.background};
 `;
 
@@ -33,16 +33,12 @@ const ContentGrid = styled.div`
   flex: 1;
   display: grid;
   grid-template-columns: 1fr;
-  gap: ${({ theme }) => theme.spacing(6)};
-  padding: ${({ theme }) => theme.spacing(6)};
+  width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  width: 100%;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     grid-template-columns: 1fr 1fr;
-    gap: ${({ theme }) => theme.spacing(8)};
-    padding: ${({ theme }) => theme.spacing(10)};
     align-items: stretch;
   }
 `;
@@ -50,11 +46,14 @@ const ContentGrid = styled.div`
 const FormColumn = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 0;
+  padding: ${({ theme }) => theme.spacing(10)}
+    ${({ theme }) => theme.spacing(15)} 0;
 `;
 
 const ImageColumn = styled.aside`
   display: none;
+  padding: ${({ theme }) => theme.spacing(5)};
+  padding-left: 0;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
