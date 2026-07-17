@@ -13,6 +13,7 @@ import {
 import { ApiError } from "@/lib/api/http";
 import { useContribute } from "@/lib/hooks/contribute";
 import type { ApiMessage } from "@/lib/api/contribute";
+import { useSuccessToast } from "@/lib/hooks/successToast";
 import type { ContributionStep } from "@/types/contributions";
 import { FirstStep } from "./FirstStep";
 import { ThirdStep } from "./ThirdStep";
@@ -51,6 +52,7 @@ export function ContributionForm() {
 
   const { trigger, handleSubmit, reset } = methods;
   const { mutateAsync: contribute, isPending } = useContribute();
+  const { showSuccessToast } = useSuccessToast();
 
   const goToStep2 = async () => {
     const isStepValid = await trigger(STEP1_FIELDS);
@@ -78,6 +80,7 @@ export function ContributionForm() {
         ],
       });
 
+      showSuccessToast(values.helpType);
       reset(defaultValues);
       setCurrentStep(1);
     } catch (error) {

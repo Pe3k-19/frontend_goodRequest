@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import styled from "styled-components";
-import { FacebookIcon } from "./icons/FacebookIcon";
-import { InstagramIcon } from "./icons/InstagramIcon";
+import { FacebookIcon } from "../icons/FacebookIcon";
+import { InstagramIcon } from "../icons/InstagramIcon";
 
 export function SocialLinks() {
   return (

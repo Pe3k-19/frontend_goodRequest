@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import { App as AntdApp } from "antd";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
 import { QueryProvider } from "@/providers/query-provider";
 import { StyledComponentsRegistry } from "@/providers/styled-components-registry";
@@ -20,9 +21,11 @@ export default function RootLayout({
     <html lang="sk">
       <body>
         <AntdRegistry>
-          <StyledComponentsRegistry>
-            <QueryProvider>{children}</QueryProvider>
-          </StyledComponentsRegistry>
+          <AntdApp>
+            <StyledComponentsRegistry>
+              <QueryProvider>{children}</QueryProvider>
+            </StyledComponentsRegistry>
+          </AntdApp>
         </AntdRegistry>
       </body>
     </html>

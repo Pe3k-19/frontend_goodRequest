@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
-import { SocialLinks } from "../SocialLinks";
+import { SocialLinks } from "../ui/SocialLinks";
 
 export const Footer = () => (
   <FooterRoot>

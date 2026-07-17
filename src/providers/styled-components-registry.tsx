@@ -9,6 +9,7 @@ import {
   ThemeProvider,
 } from "styled-components";
 import { theme } from "@/styles/theme";
+import { GlobalStyles } from "@/styles/global-styles";
 
 type StyledComponentsRegistryProps = {
   children: ReactNode;
@@ -26,12 +27,20 @@ export function StyledComponentsRegistry({
   });
 
   if (typeof window !== "undefined") {
-    return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
+    return (
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
+    );
   }
 
   return (
     <StyleSheetManager sheet={styledComponentsStyleSheet.instance}>
-      <ThemeProvider theme={theme}>{children}</ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <GlobalStyles />
+        {children}
+      </ThemeProvider>
     </StyleSheetManager>
   );
 }
