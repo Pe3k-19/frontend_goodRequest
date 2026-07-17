@@ -10,8 +10,12 @@ import {
   STEP1_FIELDS,
   type ContributionFormValues,
 } from "@/lib/validation/contribution";
+import { ApiError } from "@/lib/api/http";
+import { useContribute } from "@/lib/hooks/contribute";
+import type { ApiMessage } from "@/lib/api/contribute";
 import type { ContributionStep } from "@/types/contributions";
 import { FirstStep } from "./FirstStep";
+import { ThirdStep } from "./ThirdStep";
 import { SecondStep } from "./SecondStep";
 
 const defaultValues: ContributionFormValues = {
@@ -24,15 +28,29 @@ const defaultValues: ContributionFormValues = {
   phone: "",
 };
 
+const FALLBACK_ERROR =
+  "Nastala chyba pri odosielaní formulára. Skúste to znova.";
+
+function getSubmitErrorMessage(error: unknown): string {
+  if (!(error instanceof ApiError)) return FALLBACK_ERROR;
+
+  const messages = (error.data as { messages?: ApiMessage[] } | undefined)
+    ?.messages;
+  const firstError = messages?.find((message) => message.type === "ERROR");
+  return firstError?.message ?? FALLBACK_ERROR;
+}
+
 export function ContributionForm() {
   const [currentStep, setCurrentStep] = useState<ContributionStep>(1);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const methods = useForm<ContributionFormValues>({
     resolver: zodResolver(contributionSchema),
     mode: "onTouched",
     defaultValues,
   });
 
-  const { trigger, handleSubmit } = methods;
+  const { trigger, handleSubmit, reset } = methods;
+  const { mutateAsync: contribute, isPending } = useContribute();
 
   const goToStep2 = async () => {
     const isStepValid = await trigger(STEP1_FIELDS);
@@ -43,16 +61,61 @@ export function ContributionForm() {
     setCurrentStep(3);
   });
 
+  const submitForm = handleSubmit(async (values) => {
+    setSubmitError(null);
+
+    try {
+      await contribute({
+        value: values.amount,
+        shelterID: values.shelterId,
+        contributors: [
+          {
+            firstName: values.firstName,
+            lastName: values.lastName,
+            email: values.email,
+            phone: values.phone,
+          },
+        ],
+      });
+
+      reset(defaultValues);
+      setCurrentStep(1);
+    } catch (error) {
+      setSubmitError(getSubmitErrorMessage(error));
+    }
+  });
+
   return (
     <FormProvider {...methods}>
-      <FormRoot as="form" noValidate onSubmit={submitStep2}>
+      <FormRoot
+        as="form"
+        noValidate
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (currentStep === 2) {
+            void submitStep2(event);
+          } else if (currentStep === 3) {
+            void submitForm(event);
+          }
+        }}
+      >
         <Stepper currentStep={currentStep} />
         {currentStep === 1 && <FirstStep onContinue={goToStep2} />}
-
         {currentStep === 2 && (
           <SecondStep
             onBack={() => setCurrentStep(1)}
             onContinue={submitStep2}
+          />
+        )}
+        {currentStep === 3 && (
+          <ThirdStep
+            onBack={() => {
+              setSubmitError(null);
+              setCurrentStep(2);
+            }}
+            onSubmit={submitForm}
+            isSubmitting={isPending}
+            error={submitError}
           />
         )}
       </FormRoot>

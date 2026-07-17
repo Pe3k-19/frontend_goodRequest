@@ -6,6 +6,7 @@ type NavigationButtonProps = {
   label: string;
   disabled?: boolean;
   isBackButton?: boolean;
+  showIcon?: boolean;
   onClick?: () => void;
 };
 
@@ -14,6 +15,7 @@ export const NavButton = ({
   label,
   disabled,
   isBackButton = false,
+  showIcon = true,
   onClick,
 }: NavigationButtonProps) => {
   return (
@@ -23,9 +25,9 @@ export const NavButton = ({
       disabled={disabled}
       onClick={onClick}
     >
-      {isBackButton ? <ArrowLeftOutlined aria-hidden /> : null}
+      {isBackButton && showIcon ? <ArrowLeftOutlined aria-hidden /> : null}
       {label}
-      {!isBackButton ? <ArrowRightOutlined aria-hidden /> : null}
+      {!isBackButton && showIcon ? <ArrowRightOutlined aria-hidden /> : null}
     </NavigationButton>
   );
 };
