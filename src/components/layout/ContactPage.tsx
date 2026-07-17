@@ -11,43 +11,53 @@ import { PageWrapper } from "./PageWrapper";
 export function ContactPage() {
   return (
     <PageWrapper title="Kontakt">
-      <Grid>
-        <ContactInfoCard
-          icon={MailIcon}
-          title="Email"
-          description="Our friendly team is here to help."
-          href="mailto:hello@goodrequest.com"
-          value="hello@goodrequest.com"
-        />
-        <ContactInfoCard
-          icon={MapPinIcon}
-          title="Office"
-          description="Come say hello at our office HQ."
-          href="https://maps.google.com/?q=Obchodná+3D,+010+08+Žilina,+Slovakia"
-          value="Obchodná 3D, 010 08 Žilina, Slovakia"
-        />
-        <ContactInfoCard
-          icon={PhoneIcon}
-          title="Phone"
-          description="Mon-Fri from 8am to 5pm."
-          href="tel:+421911750750"
-          value="+421 911 750 750"
-        />
-      </Grid>
+      <Main>
+        <Grid>
+          <ContactInfoCard
+            icon={MailIcon}
+            title="Email"
+            description="Our friendly team is here to help."
+            href="mailto:hello@goodrequest.com"
+            value="hello@goodrequest.com"
+          />
+          <ContactInfoCard
+            icon={MapPinIcon}
+            title="Office"
+            description="Come say hello at our office HQ."
+            href="https://maps.google.com/?q=Obchodná+3D,+010+08+Žilina,+Slovakia"
+            value="Obchodná 3D, 010 08 Žilina, Slovakia"
+          />
+          <ContactInfoCard
+            icon={PhoneIcon}
+            title="Phone"
+            description="Mon-Fri from 8am to 5pm."
+            href="tel:+421911750750"
+            value="+421 911 750 750"
+          />
+        </Grid>
 
-      <ContactImageWrapper>
-        <Image
-          src="/images/dog_contact.jpg"
-          alt="Pes na pláži"
-          fill
-          priority
-          sizes="(max-width: 1120px) 100vw, 1120px"
-          style={{ objectFit: "cover", objectPosition: "center 30%" }}
-        />
-      </ContactImageWrapper>
+        <ContactImageWrapper>
+          <Image
+            src="/images/dog_contact.jpg"
+            alt="Pes na pláži"
+            fill
+            priority
+            sizes="(max-width: 1120px) 100vw, 1120px"
+            style={{ objectFit: "cover", objectPosition: "center 30%" }}
+          />
+        </ContactImageWrapper>
+      </Main>
     </PageWrapper>
   );
 }
+
+const Main = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: ${({ theme }) => `0 ${theme.spacing(20)}`};
+  gap: ${({ theme }) => theme.spacing(10)};
+`;
 
 const Grid = styled.div`
   display: grid;

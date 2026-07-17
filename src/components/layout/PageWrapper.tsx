@@ -25,7 +25,7 @@ export function PageWrapper({
           Späť
         </BackLink>
         <PageTitle>{title}</PageTitle>
-        <Main>{children}</Main>
+        {children}
         <Footer />
       </Content>
     </PageRoot>
@@ -80,12 +80,4 @@ const PageTitle = styled.h1`
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: 2.25rem;
   }
-`;
-
-const Main = styled.div`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  padding: ${({ theme }) => `0 ${theme.spacing(20)}`};
-  gap: ${({ theme }) => theme.spacing(10)};
 `;
