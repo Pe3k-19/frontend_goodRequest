@@ -4,15 +4,13 @@ import { useMemo, useState } from "react";
 import { Input as AntdInput, Select as AntdSelect, ConfigProvider } from "antd";
 import styled, { useTheme } from "styled-components";
 import { PHONE_COUNTRY_CONFIG } from "@/constants/phone";
-import { ArrowDownIcon } from "@/components/icons/ArrowDownIcon";
-import { FieldError, FieldLabel } from "@/styles/componnets";
 import type { PhoneCountry } from "@/types/contributions";
 import { FlagSkIcon } from "@/components/icons/FlagSkIcon";
 import { FlagCzIcon } from "@/components/icons/FlagCzIcon";
+import { FieldError, FieldLabel } from "@/styles/componnets";
+import { ArrowDownIcon } from "@/components/icons/ArrowDownIcon";
 
-export const PHONE_COUNTRIES = Object.keys(
-  PHONE_COUNTRY_CONFIG,
-) as PhoneCountry[];
+const PHONE_COUNTRIES = Object.keys(PHONE_COUNTRY_CONFIG) as PhoneCountry[];
 
 type PhoneInputProps = {
   id: string;
@@ -86,7 +84,6 @@ export const PhoneInput = ({
             optionLabelProp="label"
             labelRender={() => null}
           />
-
           <AntdInput
             id={id}
             size="large"
@@ -112,20 +109,6 @@ const PhoneInputGroup = styled.div`
   align-items: center;
   overflow: hidden;
   transition: border-color 0.2s ease;
-
-  &:focus-within {
-    border-color: ${({ theme }) => theme.colors.primary};
-  }
-
-  .ant-input,
-  .ant-input:focus,
-  .ant-input-focused {
-    box-shadow: none;
-  }
-
-  .ant-select-selector {
-    box-shadow: none !important;
-  }
 `;
 
 const CountrySelect = styled(AntdSelect)`
@@ -133,21 +116,14 @@ const CountrySelect = styled(AntdSelect)`
   height: 40px;
   background: ${({ theme }) => theme.colors.surface};
   border-radius: ${({ theme }) => theme.radii.md};
+  border: 1px solid ${({ theme }) => theme.colors.surface};
 
-  &&& .ant-select-selector {
-    padding-inline: ${({ theme }) => theme.spacing(2)};
+  &:hover {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 
-  &&& .ant-select-prefix {
-    margin-inline-end: ${({ theme }) => theme.spacing(1)};
-  }
-
-  &&& .ant-select-selection-search {
-    width: 0;
-  }
-
-  &&& .ant-select-selection-item {
-    padding: 0;
+  &:focus-within {
+    border-color: ${({ theme }) => theme.colors.primary};
   }
 `;
 
