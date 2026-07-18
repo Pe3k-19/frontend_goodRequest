@@ -1,11 +1,15 @@
 "use client";
 
-import { useState } from "react";
 import styled from "styled-components";
-import { useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from "react-hook-form";
 import { useShelters } from "@/lib/hooks/shelters";
 import type { ContributionFormValues } from "@/lib/validation/contribution";
-import { FormHeading, SectionBlock, SectionLabel } from "@/styles/componnets";
+import {
+  FieldError,
+  FormHeading,
+  SectionBlock,
+  SectionLabel,
+} from "@/styles/componnets";
 import { Checkbox } from "./Checkbox";
 import { FormNavigation } from "./FormNavigation";
 
@@ -27,8 +31,11 @@ export function ThirdStep({
   isSubmitting,
   error,
 }: ThirdStepProps) {
-  const [consent, setConsent] = useState(false);
-  const { getValues } = useFormContext<ContributionFormValues>();
+  const {
+    control,
+    getValues,
+    formState: { errors },
+  } = useFormContext<ContributionFormValues>();
   const { data: shelters = [] } = useShelters();
 
   const values = getValues();
@@ -75,16 +82,29 @@ export function ThirdStep({
         <SummaryList>{personalRowsComponents}</SummaryList>
       </SectionBlock>
       <Divider />
-      <Checkbox id="consent" checked={consent} onChange={setConsent}>
-        Súhlasím so spracovaním mojich osobných údajov
-      </Checkbox>
+      <ConsentField>
+        <Controller
+          control={control}
+          name="consent"
+          render={({ field }) => (
+            <Checkbox
+              id="consent"
+              checked={field.value}
+              onChange={field.onChange}
+            >
+              Súhlasím so spracovaním mojich osobných údajov
+            </Checkbox>
+          )}
+        />
+        <FieldError>{errors.consent?.message}</FieldError>
+      </ConsentField>
       {error ? <SubmitError role="alert">{error}</SubmitError> : null}
       <FormNavigation
         onBack={onBack}
         onContinue={onSubmit}
         continueLabel="Odoslať formulár"
         continueShowIcon={false}
-        continueDisabled={!consent || isSubmitting}
+        continueDisabled={isSubmitting}
       />
     </>
   );
@@ -118,6 +138,11 @@ const Divider = styled.div`
   height: 1px;
   margin: ${({ theme }) => theme.spacing(5)} 0;
   background-color: ${({ theme }) => theme.colors.border};
+`;
+
+const ConsentField = styled.div`
+  display: flex;
+  flex-direction: column;
 `;
 
 const SubmitError = styled.p`

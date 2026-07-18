@@ -82,13 +82,21 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
           control={control}
           name="phone"
           render={({ field }) => (
-            <PhoneInput
-              id="phone"
-              label="Telefónne číslo"
-              value={field.value}
-              onChange={field.onChange}
-              onBlur={field.onBlur}
-              error={errors.phone?.message}
+            <Controller
+              control={control}
+              name="phoneCountry"
+              render={({ field: countryField }) => (
+                <PhoneInput
+                  id="phone"
+                  label="Telefónne číslo"
+                  value={field.value}
+                  onChange={field.onChange}
+                  onBlur={field.onBlur}
+                  country={countryField.value}
+                  onCountryChange={countryField.onChange}
+                  error={errors.phone?.message}
+                />
+              )}
             />
           )}
         />

@@ -46,7 +46,8 @@ const BrandName = styled.span`
   color: ${({ theme }) => theme.colors.textPrimary};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
-  display: none;
+    display: none;
+  }
 `;
 
 const FooterLinks = styled.div`

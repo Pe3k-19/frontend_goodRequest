@@ -8,12 +8,15 @@ import { FormRoot } from "@/styles/componnets";
 import {
   contributionSchema,
   STEP1_FIELDS,
+  STEP2_FIELDS,
+  STEP3_FIELDS,
   type ContributionFormValues,
 } from "@/lib/validation/contribution";
 import { ApiError } from "@/lib/api/http";
 import { useContribute } from "@/lib/hooks/contribute";
 import type { ApiMessage } from "@/lib/api/contribute";
 import { useSuccessToast } from "@/lib/hooks/successToast";
+import { PHONE_COUNTRY_CONFIG } from "@/constants/phone";
 import type { ContributionStep } from "@/types/contributions";
 import { FirstStep } from "./FirstStep";
 import { ThirdStep } from "./ThirdStep";
@@ -26,7 +29,9 @@ const defaultValues: ContributionFormValues = {
   firstName: "",
   lastName: "",
   email: "",
-  phone: "",
+  phoneCountry: "SK",
+  phone: `${PHONE_COUNTRY_CONFIG.SK.dialCode} `,
+  consent: false,
 };
 
 const FALLBACK_ERROR =
@@ -59,56 +64,45 @@ export function ContributionForm() {
     if (isStepValid) setCurrentStep(2);
   };
 
-  const submitStep2 = handleSubmit(() => {
-    setCurrentStep(3);
-  });
+  const goToStep3 = async () => {
+    const isStepValid = await trigger(STEP2_FIELDS);
+    if (isStepValid) setCurrentStep(3);
+  };
 
   const submitForm = handleSubmit(async (values) => {
     setSubmitError(null);
+    const isStepValid = await trigger(STEP3_FIELDS);
+    if (isStepValid) {
+      try {
+        await contribute({
+          value: values.amount,
+          shelterID: values.shelterId,
+          contributors: [
+            {
+              firstName: values.firstName,
+              lastName: values.lastName,
+              email: values.email,
+              phone: values.phone,
+            },
+          ],
+        });
 
-    try {
-      await contribute({
-        value: values.amount,
-        shelterID: values.shelterId,
-        contributors: [
-          {
-            firstName: values.firstName,
-            lastName: values.lastName,
-            email: values.email,
-            phone: values.phone,
-          },
-        ],
-      });
-
-      showSuccessToast(values.helpType);
-      reset(defaultValues);
-      setCurrentStep(1);
-    } catch (error) {
-      setSubmitError(getSubmitErrorMessage(error));
+        showSuccessToast(values.helpType);
+        reset(defaultValues);
+        setCurrentStep(1);
+      } catch (error) {
+        setSubmitError(getSubmitErrorMessage(error));
+      }
     }
   });
 
   return (
     <FormProvider {...methods}>
-      <FormRoot
-        as="form"
-        noValidate
-        onSubmit={(event) => {
-          event.preventDefault();
-          if (currentStep === 2) {
-            void submitStep2(event);
-          } else if (currentStep === 3) {
-            void submitForm(event);
-          }
-        }}
-      >
+      <FormRoot as="form" noValidate>
         <Stepper currentStep={currentStep} />
         {currentStep === 1 && <FirstStep onContinue={goToStep2} />}
         {currentStep === 2 && (
-          <SecondStep
-            onBack={() => setCurrentStep(1)}
-            onContinue={submitStep2}
-          />
+          <SecondStep onBack={() => setCurrentStep(1)} onContinue={goToStep3} />
         )}
         {currentStep === 3 && (
           <ThirdStep
