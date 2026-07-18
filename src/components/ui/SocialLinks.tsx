@@ -22,6 +22,10 @@ const SocialLinksRoot = styled.div`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(3)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    gap: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 const SocialLink = styled(Link)`

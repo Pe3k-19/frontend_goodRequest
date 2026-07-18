@@ -48,6 +48,11 @@ const FormColumn = styled.div`
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing(10)}
     ${({ theme }) => theme.spacing(15)} 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    padding: ${({ theme }) => theme.spacing(10)}
+      ${({ theme }) => theme.spacing(10)} 0;
+  }
 `;
 
 const ImageColumn = styled.aside`

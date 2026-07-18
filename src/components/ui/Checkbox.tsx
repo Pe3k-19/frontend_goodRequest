@@ -33,12 +33,12 @@ const StyledCheckbox = styled(AntdCheckbox)`
     border-color: ${({ theme }) => theme.colors.primary};
   }
 
-  &&&:hover .ant-checkbox-checked:not(.ant-checkbox-disabled) {
+  &&:hover .ant-checkbox-checked:not(.ant-checkbox-disabled) {
     background-color: ${({ theme }) => theme.colors.primaryLight};
     border-color: ${({ theme }) => theme.colors.primaryDark};
   }
 
-  &&&:hover .ant-checkbox-checked::after {
+  &&:hover .ant-checkbox-checked::after {
     border-color: ${({ theme }) => theme.colors.primaryDark};
   }
 

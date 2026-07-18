@@ -44,6 +44,9 @@ const BrandName = styled.span`
   font-size: 1.125rem;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.textPrimary};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+  display: none;
 `;
 
 const FooterLinks = styled.div`
@@ -51,12 +54,20 @@ const FooterLinks = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(6)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    gap: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 const NavLinks = styled.nav`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(5)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    gap: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 const FooterLink = styled(Link)`

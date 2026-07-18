@@ -57,6 +57,10 @@ const Main = styled.div`
   flex: 1;
   padding: ${({ theme }) => `0 ${theme.spacing(20)}`};
   gap: ${({ theme }) => theme.spacing(10)};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    padding: 0;
+  }
 `;
 
 const Grid = styled.div`

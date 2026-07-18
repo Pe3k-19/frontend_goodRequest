@@ -52,6 +52,10 @@ const Main = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     gap: ${({ theme }) => theme.spacing(20)};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    padding: 0;
+  }
 `;
 
 const Intro = styled.p`
@@ -79,6 +83,10 @@ const StatsSection = styled.section`
     grid-template-columns: 1fr 1fr;
     gap: ${({ theme }) => theme.spacing(8)};
     align-items: center;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    margin: 0;
   }
 `;
 

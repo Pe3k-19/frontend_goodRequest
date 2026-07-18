@@ -63,7 +63,12 @@ const NavigationButton = styled.button<{ $variant: "primary" | "secondary" }>`
     &:hover:not(:disabled) {
       background: ${theme.colors.border};
     }
-  `}
+
+    `}
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xxs}) {
+    padding: ${({ theme }) => `${theme.spacing(3)} ${theme.spacing(4)}`};
+  }
 
   &:disabled {
     opacity: 0.45;

@@ -45,6 +45,8 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
   padding: ${({ theme }) => `${theme.spacing(8)} ${theme.spacing(10)} 0`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {

@@ -21,6 +21,8 @@ export const theme = {
   },
   spacing: (multiplier: number) => `${multiplier * 4}px`,
   breakpoints: {
+    xxs: "450px",
+    xs: "580px",
     sm: "640px",
     md: "768px",
     lg: "1024px",
