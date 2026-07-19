@@ -23,8 +23,10 @@ export function PageWrapper({
 
   return (
     <PageRoot>
-      <Content>
+      <LanguageSelectorWrapper>
         <LanguageSelector />
+      </LanguageSelectorWrapper>
+      <Content>
         <BackLink href={backHref}>
           <ArrowLeftOutlined aria-hidden />
           {t("common.back")}
@@ -43,6 +45,15 @@ const PageRoot = styled.main`
   flex-direction: column;
   background: ${({ theme }) => theme.colors.background};
   min-height: 100vh;
+`;
+
+const LanguageSelectorWrapper = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 const Content = styled.div`

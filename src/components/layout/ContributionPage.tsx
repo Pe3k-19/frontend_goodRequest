@@ -9,9 +9,11 @@ import { LanguageSelector } from "../ui/LanguageSelector";
 export function ContributionPage() {
   return (
     <PageRoot>
+      <LanguageSelectorWrapper>
+        <LanguageSelector />
+      </LanguageSelectorWrapper>
       <ContentGrid>
         <FormColumn>
-          <LanguageSelector />
           <ContributionForm />
           <Footer />
         </FormColumn>
@@ -29,6 +31,15 @@ const PageRoot = styled.main`
   min-height: 100vh;
   flex-direction: column;
   background: ${({ theme }) => theme.colors.background};
+`;
+
+const LanguageSelectorWrapper = styled.div`
+  width: 100%;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: ${({ theme }) => theme.spacing(1)};
 `;
 
 const ContentGrid = styled.div`
@@ -57,8 +68,7 @@ const FormColumn = styled.div`
 
 const ImageColumn = styled.aside`
   display: none;
-  padding: ${({ theme }) => theme.spacing(5)};
-  padding-left: 0;
+  padding: ${({ theme }) => `0 ${theme.spacing(5)} ${theme.spacing(5)} 0`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
     display: flex;
