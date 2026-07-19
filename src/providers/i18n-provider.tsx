@@ -2,7 +2,7 @@
 
 import { useEffect, type ReactNode } from "react";
 import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n from "@/i18n/config";
+import i18n, { applyClientLanguage } from "@/i18n/config";
 
 type I18nProviderProps = {
   children: ReactNode;
@@ -12,7 +12,12 @@ function DocumentLangSync({ children }: { children: ReactNode }) {
   const { i18n: i18nInstance } = useTranslation();
 
   useEffect(() => {
-    document.documentElement.lang = i18nInstance.language === "cz" ? "cs" : "sk";
+    applyClientLanguage();
+  }, []);
+
+  useEffect(() => {
+    document.documentElement.lang =
+      i18nInstance.language === "cz" ? "cs" : "sk";
   }, [i18nInstance.language]);
 
   return children;
