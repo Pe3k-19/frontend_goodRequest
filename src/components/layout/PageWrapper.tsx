@@ -50,7 +50,7 @@ const Content = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 1440px;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: 0 auto;
   padding: ${({ theme }) => `0 ${theme.spacing(10)}`};
 

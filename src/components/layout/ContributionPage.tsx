@@ -36,7 +36,7 @@ const ContentGrid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   width: 100%;
-  max-width: 1440px;
+  max-width: ${({ theme }) => theme.breakpoints.xl};
   margin: 0 auto;
 
   @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
