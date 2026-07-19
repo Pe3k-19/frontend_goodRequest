@@ -6,6 +6,7 @@ import styled from "styled-components";
 import { useTranslation } from "react-i18next";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Footer } from "./Footer";
+import { LanguageSelector } from "../ui/LanguageSelector";
 
 type PageWrapperProps = {
   title: string;
@@ -23,6 +24,7 @@ export function PageWrapper({
   return (
     <PageRoot>
       <Content>
+        <LanguageSelector />
         <BackLink href={backHref}>
           <ArrowLeftOutlined aria-hidden />
           {t("common.back")}
@@ -50,10 +52,10 @@ const Content = styled.div`
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
-  padding: ${({ theme }) => `${theme.spacing(8)} ${theme.spacing(10)} 0`};
+  padding: ${({ theme }) => `0 ${theme.spacing(10)}`};
 
   @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => `${theme.spacing(8)} ${theme.spacing(15)} 0`};
+    padding: ${({ theme }) => `0 ${theme.spacing(15)}`};
   }
 `;
 

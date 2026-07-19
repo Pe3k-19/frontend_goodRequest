@@ -37,17 +37,18 @@ export const LanguageSelector = () => {
 };
 
 const Root = styled.div`
-  position: fixed;
-  top: ${({ theme }) => theme.spacing(6)};
-  right: ${({ theme }) => theme.spacing(8)};
-  z-index: 100;
-  display: inline-flex;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   gap: ${({ theme }) => theme.spacing(1)};
   padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.radii.md};
+  margin-left: ${({ theme }) => theme.spacing(-12)};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
     top: ${({ theme }) => theme.spacing(2)};
+    margin-left: ${({ theme }) => theme.spacing(-8)};
   }
 `;
 

@@ -4,12 +4,14 @@ import styled from "styled-components";
 import { Footer } from "./Footer";
 import { HeroImage } from "./HeroImage";
 import { ContributionForm } from "../ui/ContributionForm";
+import { LanguageSelector } from "../ui/LanguageSelector";
 
 export function ContributionPage() {
   return (
     <PageRoot>
       <ContentGrid>
         <FormColumn>
+          <LanguageSelector />
           <ContributionForm />
           <Footer />
         </FormColumn>
@@ -46,12 +48,10 @@ const ContentGrid = styled.div`
 const FormColumn = styled.div`
   display: flex;
   flex-direction: column;
-  padding: ${({ theme }) => theme.spacing(10)}
-    ${({ theme }) => theme.spacing(15)} 0;
+  padding: ${({ theme }) => `0 ${theme.spacing(15)}`};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => theme.spacing(10)}
-      ${({ theme }) => theme.spacing(10)} 0;
+    padding: ${({ theme }) => `0 ${theme.spacing(10)}`};
   }
 `;
 
