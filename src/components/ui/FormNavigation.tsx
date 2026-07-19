@@ -1,6 +1,7 @@
 "use client";
 
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { NavButton } from "./NavButton";
 
 type FormNavigationProps = {
@@ -17,21 +18,23 @@ export function FormNavigation({
   onContinue,
   backDisabled = false,
   continueDisabled = false,
-  continueLabel = "Pokračovať",
+  continueLabel,
   continueShowIcon = true,
 }: FormNavigationProps) {
+  const { t } = useTranslation();
+
   return (
     <NavigationRoot>
       <NavButton
         variant="secondary"
-        label="Späť"
+        label={t("common.back")}
         disabled={backDisabled}
         isBackButton={true}
         onClick={onBack}
       />
       <NavButton
         variant="primary"
-        label={continueLabel}
+        label={continueLabel ?? t("common.continue")}
         disabled={continueDisabled}
         showIcon={continueShowIcon}
         onClick={onContinue}

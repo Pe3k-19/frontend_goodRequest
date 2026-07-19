@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslation } from "react-i18next";
 import { Stepper } from "@/components/ui/Stepper";
 import { FormRoot } from "@/styles/componnets";
 import {
-  contributionSchema,
+  createContributionSchema,
   STEP1_FIELDS,
   STEP2_FIELDS,
   STEP3_FIELDS,
@@ -34,23 +35,25 @@ const defaultValues: ContributionFormValues = {
   consent: false,
 };
 
-const FALLBACK_ERROR =
-  "Nastala chyba pri odosielaní formulára. Skúste to znova.";
-
-function getSubmitErrorMessage(error: unknown): string {
-  if (!(error instanceof ApiError)) return FALLBACK_ERROR;
+function getSubmitErrorMessage(
+  error: unknown,
+  fallback: string,
+): string {
+  if (!(error instanceof ApiError)) return fallback;
 
   const messages = (error.data as { messages?: ApiMessage[] } | undefined)
     ?.messages;
   const firstError = messages?.find((message) => message.type === "ERROR");
-  return firstError?.message ?? FALLBACK_ERROR;
+  return firstError?.message ?? fallback;
 }
 
 export function ContributionForm() {
+  const { t } = useTranslation();
   const [currentStep, setCurrentStep] = useState<ContributionStep>(1);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const methods = useForm<ContributionFormValues>({
-    resolver: zodResolver(contributionSchema),
+    resolver: (values, context, options) =>
+      zodResolver(createContributionSchema(t))(values, context, options),
     mode: "onTouched",
     defaultValues,
   });
@@ -91,7 +94,7 @@ export function ContributionForm() {
         reset(defaultValues);
         setCurrentStep(1);
       } catch (error) {
-        setSubmitError(getSubmitErrorMessage(error));
+        setSubmitError(getSubmitErrorMessage(error, t("form.submitError")));
       }
     }
   });

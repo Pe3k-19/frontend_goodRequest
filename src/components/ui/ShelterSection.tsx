@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslation } from "react-i18next";
 import { Select } from "@/components/ui/Select";
 import { useShelters } from "@/lib/hooks/shelters";
 import { SectionBlock, SectionLabel } from "@/styles/componnets";
@@ -19,6 +20,7 @@ export function ShelterSection({
   required = false,
   error,
 }: ShelterSectionProps) {
+  const { t } = useTranslation();
   const { data: shelters = [], isLoading } = useShelters();
   const options = shelters.map((shelter) => ({
     value: shelter.id,
@@ -27,11 +29,11 @@ export function ShelterSection({
 
   return (
     <SectionBlock>
-      <SectionLabel>O projekte</SectionLabel>
+      <SectionLabel>{t("form.aboutProject")}</SectionLabel>
       <Select
         id="shelters-select"
-        label="Útulok"
-        placeholder="Vyberte útulok zo zoznamu"
+        label={t("form.shelterLabel")}
+        placeholder={t("form.shelterPlaceholder")}
         value={value}
         onChange={onChange}
         onBlur={onBlur}

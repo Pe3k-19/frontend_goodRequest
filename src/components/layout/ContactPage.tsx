@@ -2,44 +2,56 @@
 
 import Image from "next/image";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { MailIcon } from "@/components/icons/MailIcon";
 import { PhoneIcon } from "@/components/icons/PhoneIcon";
 import { MapPinIcon } from "@/components/icons/MapPinIcon";
 import { ContactInfoCard } from "@/components/ui/ContactInfoCard";
 import { PageWrapper } from "./PageWrapper";
 
+const CONTACT_INFO = {
+  email: "hello@goodrequest.com",
+  office: "Obchodná 3D, 010 08 Žilina, Slovakia",
+  phone: "+421 911 750 750",
+  emailDescription: "Our friendly team is here to help.",
+  officeDescription: "Come say hello at our office HQ.",
+  phoneDescription: "Mon-Fri from 8am to 5pm.",
+};
+
 export function ContactPage() {
+  const { t } = useTranslation();
+
   return (
-    <PageWrapper title="Kontakt">
+    <PageWrapper title={t("nav.contact")}>
       <Main>
         <Grid>
           <ContactInfoCard
             icon={MailIcon}
-            title="Email"
-            description="Our friendly team is here to help."
+            title={t("form.email")}
+            description={CONTACT_INFO.emailDescription}
             href="mailto:hello@goodrequest.com"
-            value="hello@goodrequest.com"
+            value={CONTACT_INFO.email}
           />
           <ContactInfoCard
             icon={MapPinIcon}
-            title="Office"
-            description="Come say hello at our office HQ."
+            title={t("contact.officeTitle")}
+            description={CONTACT_INFO.officeDescription}
             href="https://maps.google.com/?q=Obchodná+3D,+010+08+Žilina,+Slovakia"
-            value="Obchodná 3D, 010 08 Žilina, Slovakia"
+            value={CONTACT_INFO.office}
           />
           <ContactInfoCard
             icon={PhoneIcon}
-            title="Phone"
-            description="Mon-Fri from 8am to 5pm."
+            title={t("contact.phoneTitle")}
+            description={CONTACT_INFO.phoneDescription}
             href="tel:+421911750750"
-            value="+421 911 750 750"
+            value={CONTACT_INFO.phone}
           />
         </Grid>
 
         <ContactImageWrapper>
           <Image
             src="/images/dog_contact.jpg"
-            alt="Pes na pláži"
+            alt={t("contact.imageAlt")}
             fill
             priority
             sizes="(max-width: 1120px) 100vw, 1120px"

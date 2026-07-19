@@ -2,6 +2,7 @@
 
 import styled from "styled-components";
 import { Controller, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { useShelters } from "@/lib/hooks/shelters";
 import type { ContributionFormValues } from "@/lib/validation/contribution";
 import {
@@ -12,11 +13,7 @@ import {
 } from "@/styles/componnets";
 import { Checkbox } from "./Checkbox";
 import { FormNavigation } from "./FormNavigation";
-
-const HELP_TYPE_SUMMARY = {
-  foundation: "Finančný príspevok celej nadácii",
-  shelter: "Finančný príspevok konkrétnemu útulku",
-} as const;
+import { CURRENCY } from "@/constants/units";
 
 type ThirdStepProps = {
   onBack: () => void;
@@ -31,6 +28,7 @@ export function ThirdStep({
   isSubmitting,
   error,
 }: ThirdStepProps) {
+  const { t } = useTranslation();
   const {
     control,
     getValues,
@@ -43,43 +41,53 @@ export function ThirdStep({
     (shelter) => shelter.id === values.shelterId,
   )?.name;
 
+  const helpSummaryKey =
+    values.helpType === "foundation"
+      ? "form.helpSummaryFoundation"
+      : "form.helpSummaryShelter";
+
   const contributionRows = [
-    { label: "Forma pomoci", value: HELP_TYPE_SUMMARY[values.helpType] },
-    ...(shelterName ? [{ label: "Útulok", value: shelterName }] : []),
-    { label: "Suma príspevku", value: `${values.amount} €` },
+    { label: t("form.helpForm"), value: t(helpSummaryKey) },
+    ...(shelterName
+      ? [{ label: t("form.shelterLabel"), value: shelterName }]
+      : []),
+    {
+      label: t("form.contributionAmount"),
+      value: `${values.amount} ${CURRENCY}`,
+    },
   ];
 
   const personalRows = [
     {
-      label: "Meno a priezvisko",
+      label: t("form.fullName"),
       value: `${values.firstName} ${values.lastName}`.trim(),
     },
-    { label: "E-mail", value: values.email },
-    { label: "Telefónne číslo", value: values.phone },
+    { label: t("form.emailShort"), value: values.email },
+    { label: t("form.phone"), value: values.phone },
   ];
-
-  const contributionRowsComponents = contributionRows.map((row) => (
-    <SummaryRow key={row.label}>
-      <SummaryLabel>{row.label}</SummaryLabel>
-      <SummaryValue>{row.value}</SummaryValue>
-    </SummaryRow>
-  ));
-
-  const personalRowsComponents = personalRows.map((row) => (
-    <SummaryRow key={row.label}>
-      <SummaryLabel>{row.label}</SummaryLabel>
-      <SummaryValue>{row.value}</SummaryValue>
-    </SummaryRow>
-  ));
 
   return (
     <>
-      <FormHeading>Skontrolujte si zadané údaje</FormHeading>
+      <FormHeading>{t("form.step3Title")}</FormHeading>
       <SectionBlock>
-        <SectionLabel>Zhrnutie</SectionLabel>
-        <SummaryList>{contributionRowsComponents}</SummaryList>
+        <SectionLabel>{t("form.summary")}</SectionLabel>
+        <SummaryList>
+          {contributionRows.map((row) => (
+            <SummaryRow key={row.label}>
+              <SummaryLabel>{row.label}</SummaryLabel>
+              <SummaryValue>{row.value}</SummaryValue>
+            </SummaryRow>
+          ))}
+        </SummaryList>
         <Divider />
-        <SummaryList>{personalRowsComponents}</SummaryList>
+        <SummaryList>
+          {personalRows.map((row) => (
+            <SummaryRow key={row.label}>
+              <SummaryLabel>{row.label}</SummaryLabel>
+              <SummaryValue>{row.value}</SummaryValue>
+            </SummaryRow>
+          ))}
+        </SummaryList>
       </SectionBlock>
       <Divider />
       <ConsentField>
@@ -92,7 +100,7 @@ export function ThirdStep({
               checked={field.value}
               onChange={field.onChange}
             >
-              Súhlasím so spracovaním mojich osobných údajov
+              {t("form.consent")}
             </Checkbox>
           )}
         />
@@ -102,7 +110,7 @@ export function ThirdStep({
       <FormNavigation
         onBack={onBack}
         onContinue={onSubmit}
-        continueLabel="Odoslať formulár"
+        continueLabel={t("form.submit")}
         continueShowIcon={false}
         continueDisabled={isSubmitting}
       />

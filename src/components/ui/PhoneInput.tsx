@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { Input as AntdInput, Select as AntdSelect, ConfigProvider } from "antd";
 import styled, { useTheme } from "styled-components";
+import { useTranslation } from "react-i18next";
 import { PHONE_COUNTRY_CONFIG } from "@/constants/phone";
 import type { PhoneCountry } from "@/types/contributions";
 import { FlagSkIcon } from "@/components/icons/FlagSkIcon";
@@ -72,6 +73,7 @@ export const PhoneInput = ({
   error,
   onBlur,
 }: PhoneInputProps) => {
+  const { t } = useTranslation();
   const theme = useTheme();
   const dialCode = PHONE_COUNTRY_CONFIG[country].dialCode;
   const nationalValue = getNationalNumber(value, country);
@@ -131,7 +133,7 @@ export const PhoneInput = ({
               <ArrowDownIcon width={12} height={12} color={theme.colors.icon} />
             }
             popupMatchSelectWidth={false}
-            aria-label="Predvoľba krajiny"
+            aria-label={t("form.phoneCountryAria")}
             labelRender={() => null}
           />
           <DialCode aria-hidden>{dialCode}</DialCode>
@@ -144,7 +146,10 @@ export const PhoneInput = ({
             onBlur={onBlur}
             aria-required={required}
             aria-invalid={error ? true : undefined}
-            aria-label={`${label}, predvoľba ${dialCode}`}
+            aria-label={t("form.phoneCountryOption", {
+              label,
+              dialCode,
+            })}
             inputMode="tel"
           />
         </PhoneInputGroup>

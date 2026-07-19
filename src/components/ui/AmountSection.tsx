@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { CURRENCY } from "@/constants/units";
 import { FieldError, SectionBlock, SectionLabel } from "@/styles/componnets";
 import { Button } from "./Button";
 
@@ -20,6 +22,7 @@ export function AmountSection({
   onBlur,
   error,
 }: AmountSectionProps) {
+  const { t } = useTranslation();
   const [inputValue, setInputValue] = useState(value.toString());
 
   const handleInputChange = (raw: string) => {
@@ -37,7 +40,7 @@ export function AmountSection({
     <Button
       key={amount}
       value={amount}
-      presetSymbol="€"
+      presetSymbol={CURRENCY}
       active={Number(value) === amount}
       onClick={() => handlePresetClick(amount)}
     />
@@ -45,7 +48,7 @@ export function AmountSection({
 
   return (
     <SectionBlock>
-      <SectionLabel>Suma, ktorou chcem prispieť</SectionLabel>
+      <SectionLabel>{t("form.amountLabel")}</SectionLabel>
 
       <AmountInputWrapper>
         <AmountInput
@@ -54,12 +57,12 @@ export function AmountSection({
           value={inputValue}
           onChange={(event) => handleInputChange(event.target.value)}
           onBlur={onBlur}
-          aria-label="Suma príspevku v eurách"
+          aria-label={t("form.amountAria")}
           aria-invalid={error ? true : undefined}
         />
-        <CurrencySuffix>€</CurrencySuffix>
+        <CurrencySuffix>{CURRENCY}</CurrencySuffix>
       </AmountInputWrapper>
-      <PresetGrid role="group" aria-label="Predvolené sumy">
+      <PresetGrid role="group" aria-label={t("form.presetsAria")}>
         {presetButtons}
       </PresetGrid>
       <FieldError>{error}</FieldError>

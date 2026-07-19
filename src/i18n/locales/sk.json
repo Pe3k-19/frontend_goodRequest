@@ -1,0 +1,89 @@
+{
+  "common": {
+    "back": "Späť",
+    "continue": "Pokračovať",
+    "optional": "(Nepovinné)",
+    "loadingPlaceholder": "—",
+    "currency": "€",
+    "brandName": "Good boy",
+    "language": "Jazyk"
+  },
+  "nav": {
+    "contact": "Kontakt",
+    "about": "O projekte"
+  },
+  "steps": {
+    "shelter": "Výber útulku",
+    "personal": "Osobné údaje",
+    "confirmation": "Potvrdenie"
+  },
+  "form": {
+    "step1Title": "Vyberte si možnosť, ako chcete pomôcť",
+    "step2Title": "Potrebujeme od Vás zopár informácií",
+    "step3Title": "Skontrolujte si zadané údaje",
+    "aboutYou": "O vás",
+    "aboutProject": "O projekte",
+    "helpTypeAria": "Typ príspevku",
+    "helpShelter": "Prispieť konkrétnemu útulku",
+    "helpFoundation": "Prispieť celej nadácii",
+    "shelterLabel": "Útulok",
+    "shelterPlaceholder": "Vyberte útulok zo zoznamu",
+    "amountLabel": "Suma, ktorou chcem prispieť",
+    "amountAria": "Suma príspevku v eurách",
+    "presetsAria": "Predvolené sumy",
+    "firstName": "Meno",
+    "firstNamePlaceholder": "Zadajte Vaše meno",
+    "lastName": "Priezvisko",
+    "lastNamePlaceholder": "Zadajte Vaše priezvisko",
+    "email": "E-mailová adresa",
+    "emailPlaceholder": "Zadajte Váš e-mail",
+    "phone": "Telefónne číslo",
+    "phoneCountryAria": "Predvoľba krajiny",
+    "phoneCountryOption": "{{label}}, predvoľba {{dialCode}}",
+    "summary": "Zhrnutie",
+    "helpForm": "Forma pomoci",
+    "helpSummaryFoundation": "Finančný príspevok celej nadácii",
+    "helpSummaryShelter": "Finančný príspevok konkrétnemu útulku",
+    "contributionAmount": "Suma príspevku",
+    "fullName": "Meno a priezvisko",
+    "emailShort": "E-mail",
+    "consent": "Súhlasím so spracovaním mojich osobných údajov",
+    "submit": "Odoslať formulár",
+    "submitError": "Nastala chyba pri odosielaní formulára. Skúste to znova."
+  },
+  "validation": {
+    "amountRequired": "Zadajte sumu, ktorou chcete prispieť",
+    "amountPositive": "Suma musí byť väčšia ako 0",
+    "firstNameMin": "Meno musí mať aspoň 2 znaky",
+    "firstNameMax": "Meno môže mať najviac 20 znakov",
+    "lastNameMin": "Priezvisko musí mať aspoň 2 znaky",
+    "lastNameMax": "Priezvisko môže mať najviac 30 znakov",
+    "emailInvalid": "Zadajte platnú e-mailovú adresu",
+    "emailDomain": "Zadajte e-mail s platnou doménou (napr. meno@domena.sk)",
+    "phoneInvalid": "Zadajte platné číslo v tvare \"+421 XXX XXX XXX\" alebo \"+420 XXX XXX XXX\"",
+    "consentRequired": "Musíte súhlasiť so spracovaním osobných údajov",
+    "shelterRequired": "Vyberte útulok zo zoznamu"
+  },
+  "toast": {
+    "shelterSuccess": "Ďakujeme za Vašu pomoc pre útulok.",
+    "foundationSuccess": "Ďakujeme za Vašu platbu."
+  },
+  "about": {
+    "title": "O projekte",
+    "resultsAria": "Výsledky zbierky",
+    "totalRaised": "Celková vyzbieraná hodnota",
+    "donorsCount": "Počet darcov",
+    "intro": "Nadácia Good Boy sa venuje zlepšovaniu života psov v Žiline na Slovensku. Zachraňujeme opustené, týrané a bezdomovské psy, poskytujeme im lekársku starostlivosť, útočisko a lásku, ktorú si zaslúžia. Naším poslaním je dať týmto verným spoločníkom druhú šancu na život tým, že im nájdeme milujúci domov. Okrem záchrany a rehabilitácie sa zameriavame aj na podporu zodpovedného vlastníctva zvierat a ochrany zvierat prostredníctvom vzdelávacích a komunitných programov.",
+    "outro": "Naša práca je možná vďaka podpore vášnivých dobrovoľníkov, štedrých darcov a komunity, ktorá sa hlboko stará o dobro zvierat. Organizujeme aj kastračné a sterilizačné iniciatívy, aby sme riešili problém túlavých psov a zabezpečili dlhodobý vplyv. V nadácii Good Boy veríme, že každý pes si zaslúži bezpečný, milujúci domov a šťastný život. Pridajte sa k nám a pomôžte nám robiť zmeny – či už dobrovoľníctvom, darovaním alebo adopciou chlpatého priateľa. Spoločne môžeme vytvoriť lepšiu budúcnosť pre psy v Žiline."
+  },
+  "contact": {
+    "officeTitle": "Office",
+    "phoneTitle": "Phone",
+    "imageAlt": "Pes na pláži"
+  },
+  "a11y": {
+    "social": "Sociálne siete",
+    "facebook": "Facebook",
+    "instagram": "Instagram"
+  }
+}

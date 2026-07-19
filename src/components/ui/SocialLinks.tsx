@@ -2,16 +2,22 @@
 
 import Link from "next/link";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { FacebookIcon } from "../icons/FacebookIcon";
 import { InstagramIcon } from "../icons/InstagramIcon";
 
 export function SocialLinks() {
+  const { t } = useTranslation();
+
   return (
-    <SocialLinksRoot aria-label="Sociálne siete">
-      <SocialLink href="https://www.facebook.com/" aria-label="Facebook">
+    <SocialLinksRoot aria-label={t("a11y.social")}>
+      <SocialLink href="https://www.facebook.com/" aria-label={t("a11y.facebook")}>
         <FacebookIcon />
       </SocialLink>
-      <SocialLink href="https://www.instagram.com/" aria-label="Instagram">
+      <SocialLink
+        href="https://www.instagram.com/"
+        aria-label={t("a11y.instagram")}
+      >
         <InstagramIcon />
       </SocialLink>
     </SocialLinksRoot>

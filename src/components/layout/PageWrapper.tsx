@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import Link from "next/link";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { ArrowLeftOutlined } from "@ant-design/icons";
 import { Footer } from "./Footer";
 
@@ -17,12 +18,14 @@ export function PageWrapper({
   children,
   backHref = "/",
 }: PageWrapperProps) {
+  const { t } = useTranslation();
+
   return (
     <PageRoot>
       <Content>
         <BackLink href={backHref}>
           <ArrowLeftOutlined aria-hidden />
-          Späť
+          {t("common.back")}
         </BackLink>
         <PageTitle>{title}</PageTitle>
         {children}

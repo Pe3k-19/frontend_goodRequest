@@ -1,43 +1,50 @@
 "use client";
 
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
+import { CURRENCY } from "@/constants/units";
 import { useResults } from "@/lib/hooks/results";
-import { ABOUT_INTRO, ABOUT_OUTRO } from "@/constants/about";
 import { PageWrapper } from "./PageWrapper";
 
-function formatAmount(value: number): string {
-  return `${new Intl.NumberFormat("sk-SK").format(value)} €`;
-}
-
-function formatCount(value: number): string {
-  return new Intl.NumberFormat("sk-SK").format(value);
-}
-
 export function AboutPage() {
+  const { t, i18n } = useTranslation();
   const { data, isLoading } = useResults();
 
   const contribution = data?.contribution ?? 0;
   const contributors = data?.contributors ?? 0;
+  const locale = i18n.language === "cz" ? "cs-CZ" : "sk-SK";
+
+  const formatAmount = (value: number) =>
+    `${new Intl.NumberFormat(locale).format(value)} ${CURRENCY}`;
+
+  const formatCount = (value: number) =>
+    new Intl.NumberFormat(locale).format(value);
 
   return (
-    <PageWrapper title="O projekte">
+    <PageWrapper title={t("about.title")}>
       <Main>
-        <Intro>{ABOUT_INTRO}</Intro>
+        <Intro>{t("about.intro")}</Intro>
 
-        <StatsSection aria-label="Výsledky zbierky">
+        <StatsSection aria-label={t("about.resultsAria")}>
           <Stat>
             <StatValue>
-              {isLoading ? "—" : formatAmount(contribution)}
+              {isLoading
+                ? t("common.loadingPlaceholder")
+                : formatAmount(contribution)}
             </StatValue>
-            <StatLabel>Celková vyzbieraná hodnota</StatLabel>
+            <StatLabel>{t("about.totalRaised")}</StatLabel>
           </Stat>
           <Stat>
-            <StatValue>{isLoading ? "—" : formatCount(contributors)}</StatValue>
-            <StatLabel>Počet darcov</StatLabel>
+            <StatValue>
+              {isLoading
+                ? t("common.loadingPlaceholder")
+                : formatCount(contributors)}
+            </StatValue>
+            <StatLabel>{t("about.donorsCount")}</StatLabel>
           </Stat>
         </StatsSection>
 
-        <Outro>{ABOUT_OUTRO}</Outro>
+        <Outro>{t("about.outro")}</Outro>
       </Main>
     </PageWrapper>
   );

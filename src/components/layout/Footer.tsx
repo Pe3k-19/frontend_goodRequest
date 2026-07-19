@@ -3,26 +3,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import { SocialLinks } from "../ui/SocialLinks";
 
-export const Footer = () => (
-  <FooterRoot>
-    <Divider />
-    <BrandGroup>
-      <Image src="/icon.svg" alt="" width={32} height={32} aria-hidden />
-      <BrandName>Good boy</BrandName>
-    </BrandGroup>
+const BRAND_NAME = "Good Boy";
 
-    <FooterLinks>
-      <SocialLinks />
+export const Footer = () => {
+  const { t } = useTranslation();
 
-      <NavLinks>
-        <FooterLink href="/contact">Kontakt</FooterLink>
-        <FooterLink href="/about">O projekte</FooterLink>
-      </NavLinks>
-    </FooterLinks>
-  </FooterRoot>
-);
+  return (
+    <FooterRoot>
+      <Divider />
+      <BrandGroup>
+        <Image src="/icon.svg" alt="" width={32} height={32} aria-hidden />
+        <BrandName>{BRAND_NAME}</BrandName>
+      </BrandGroup>
+
+      <FooterLinks>
+        <SocialLinks />
+
+        <NavLinks>
+          <FooterLink href="/contact">{t("nav.contact")}</FooterLink>
+          <FooterLink href="/about">{t("nav.about")}</FooterLink>
+        </NavLinks>
+      </FooterLinks>
+    </FooterRoot>
+  );
+};
 
 const FooterRoot = styled.footer`
   display: flex;

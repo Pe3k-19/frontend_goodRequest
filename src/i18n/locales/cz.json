@@ -1,0 +1,89 @@
+{
+  "common": {
+    "back": "Zpět",
+    "continue": "Pokračovat",
+    "optional": "(Nepovinné)",
+    "loadingPlaceholder": "—",
+    "currency": "€",
+    "brandName": "Good boy",
+    "language": "Jazyk"
+  },
+  "nav": {
+    "contact": "Kontakt",
+    "about": "O projektu"
+  },
+  "steps": {
+    "shelter": "Výběr útulku",
+    "personal": "Osobní údaje",
+    "confirmation": "Potvrzení"
+  },
+  "form": {
+    "step1Title": "Vyberte si možnost, jak chcete pomoci",
+    "step2Title": "Potřebujeme od Vás pár informací",
+    "step3Title": "Zkontrolujte zadané údaje",
+    "aboutYou": "O vás",
+    "aboutProject": "O projektu",
+    "helpTypeAria": "Typ příspěvku",
+    "helpShelter": "Přispět konkrétnímu útulku",
+    "helpFoundation": "Přispět celé nadaci",
+    "shelterLabel": "Útulek",
+    "shelterPlaceholder": "Vyberte útulek ze seznamu",
+    "amountLabel": "Částka, kterou chci přispět",
+    "amountAria": "Částka příspěvku v eurech",
+    "presetsAria": "Předvolené částky",
+    "firstName": "Jméno",
+    "firstNamePlaceholder": "Zadejte Vaše jméno",
+    "lastName": "Příjmení",
+    "lastNamePlaceholder": "Zadejte Vaše příjmení",
+    "email": "E-mailová adresa",
+    "emailPlaceholder": "Zadejte Váš e-mail",
+    "phone": "Telefonní číslo",
+    "phoneCountryAria": "Předvolba země",
+    "phoneCountryOption": "{{label}}, předvolba {{dialCode}}",
+    "summary": "Shrnutí",
+    "helpForm": "Forma pomoci",
+    "helpSummaryFoundation": "Finanční příspěvek celé nadaci",
+    "helpSummaryShelter": "Finanční příspěvek konkrétnímu útulku",
+    "contributionAmount": "Částka příspěvku",
+    "fullName": "Jméno a příjmení",
+    "emailShort": "E-mail",
+    "consent": "Souhlasím se zpracováním mých osobních údajů",
+    "submit": "Odeslat formulář",
+    "submitError": "Při odesílání formuláře nastala chyba. Zkuste to znovu."
+  },
+  "validation": {
+    "amountRequired": "Zadejte částku, kterou chcete přispět",
+    "amountPositive": "Částka musí být větší než 0",
+    "firstNameMin": "Jméno musí mít alespoň 2 znaky",
+    "firstNameMax": "Jméno může mít nejvýše 20 znaků",
+    "lastNameMin": "Příjmení musí mít alespoň 2 znaky",
+    "lastNameMax": "Příjmení může mít nejvýše 30 znaků",
+    "emailInvalid": "Zadejte platnou e-mailovou adresu",
+    "emailDomain": "Zadejte e-mail s platnou doménou (např. jmeno@domena.cz)",
+    "phoneInvalid": "Zadejte platné číslo ve tvaru \"+421 XXX XXX XXX\" nebo \"+420 XXX XXX XXX\"",
+    "consentRequired": "Musíte souhlasit se zpracováním osobních údajů",
+    "shelterRequired": "Vyberte útulek ze seznamu"
+  },
+  "toast": {
+    "shelterSuccess": "Děkujeme za Vaši pomoc útulku.",
+    "foundationSuccess": "Děkujeme za Vaši platbu."
+  },
+  "about": {
+    "title": "O projektu",
+    "resultsAria": "Výsledky sbírky",
+    "totalRaised": "Celková vybraná částka",
+    "donorsCount": "Počet dárců",
+    "intro": "Nadace Good Boy se věnuje zlepšování života psů v Žilině na Slovensku. Zachraňujeme opuštěné, týrané a bezdomovské psy, poskytujeme jim lékařskou péči, útočiště a lásku, kterou si zaslouží. Naším posláním je dát těmto věrným společníkům druhou šanci na život tím, že jim najdeme milující domov. Kromě záchrany a rehabilitace se zaměřujeme také na podporu odpovědného vlastnictví zvířat a ochrany zvířat prostřednictvím vzdělávacích a komunitních programů.",
+    "outro": "Naše práce je možná díky podpoře vášnivých dobrovolníků, štědrých dárců a komunity, která se hluboce stará o dobro zvířat. Organizujeme také kastrační a sterilizační iniciativy, abychom řešili problém toulavých psů a zajistili dlouhodobý dopad. V nadaci Good Boy věříme, že každý pes si zaslouží bezpečný, milující domov a šťastný život. Přidejte se k nám a pomozte nám dělat změny - ať už dobrovolnictvím, darováním nebo adopcí chlupatého přítele. Společně můžeme vytvořit lepší budoucnost pro psy v Žilině."
+  },
+  "contact": {
+    "officeTitle": "Kancelář",
+    "phoneTitle": "Telefon",
+    "imageAlt": "Pes na pláži"
+  },
+  "a11y": {
+    "social": "Sociální sítě",
+    "facebook": "Facebook",
+    "instagram": "Instagram"
+  }
+}

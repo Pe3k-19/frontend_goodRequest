@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useTheme } from "styled-components";
 import { Select as AntdSelect, ConfigProvider } from "antd";
+import { useTranslation } from "react-i18next";
 import { ArrowDownIcon } from "../icons/ArrowDownIcon";
 import { FieldError, FieldLabel, OptionalTag } from "@/styles/componnets";
 
@@ -36,6 +37,7 @@ export const Select = <T extends string | number>({
   required = false,
   error,
 }: SelectProps<T>) => {
+  const { t } = useTranslation();
   const theme = useTheme();
 
   const selectTheme = useMemo(
@@ -55,7 +57,7 @@ export const Select = <T extends string | number>({
   return (
     <div>
       <FieldLabel htmlFor={id}>
-        {label} {!required && <OptionalTag>(Nepovinné)</OptionalTag>}
+        {label} {!required && <OptionalTag>{t("common.optional")}</OptionalTag>}
       </FieldLabel>
       <ConfigProvider theme={selectTheme}>
         <AntdSelect

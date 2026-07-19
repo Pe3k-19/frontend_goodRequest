@@ -1,11 +1,12 @@
 "use client";
 
 import styled from "styled-components";
+import { useTranslation } from "react-i18next";
 import type { HelpType } from "@/types/contributions";
 
-const HELP_TYPE_LABELS = {
-  shelter: "Prispieť konkrétnemu útulku",
-  foundation: "Prispieť celej nadácii",
+const HELP_TYPE_KEYS = {
+  shelter: "form.helpShelter",
+  foundation: "form.helpFoundation",
 } as const;
 
 type HelpTypeToggleProps = {
@@ -13,21 +14,25 @@ type HelpTypeToggleProps = {
   onChange: (value: HelpType) => void;
 };
 
-export const ToggleButtons = ({ value, onChange }: HelpTypeToggleProps) => (
-  <ToggleRoot role="group" aria-label="Typ príspevku">
-    {(Object.keys(HELP_TYPE_LABELS) as HelpType[]).map((type) => (
-      <ToggleButton
-        key={type}
-        type="button"
-        $active={value === type}
-        aria-pressed={value === type}
-        onClick={() => onChange(type)}
-      >
-        {HELP_TYPE_LABELS[type]}
-      </ToggleButton>
-    ))}
-  </ToggleRoot>
-);
+export const ToggleButtons = ({ value, onChange }: HelpTypeToggleProps) => {
+  const { t } = useTranslation();
+
+  return (
+    <ToggleRoot role="group" aria-label={t("form.helpTypeAria")}>
+      {(Object.keys(HELP_TYPE_KEYS) as HelpType[]).map((type) => (
+        <ToggleButton
+          key={type}
+          type="button"
+          $active={value === type}
+          aria-pressed={value === type}
+          onClick={() => onChange(type)}
+        >
+          {t(HELP_TYPE_KEYS[type])}
+        </ToggleButton>
+      ))}
+    </ToggleRoot>
+  );
+};
 
 const ToggleRoot = styled.div`
   display: grid;

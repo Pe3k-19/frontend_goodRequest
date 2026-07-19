@@ -1,6 +1,7 @@
 "use client";
 
 import { Controller, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import styled from "styled-components";
 import type { ContributionFormValues } from "@/lib/validation/contribution";
 import { FormHeading, SectionBlock, SectionLabel } from "@/styles/componnets";
@@ -14,6 +15,7 @@ type SecondStepProps = {
 };
 
 export function SecondStep({ onBack, onContinue }: SecondStepProps) {
+  const { t } = useTranslation();
   const {
     control,
     formState: { errors },
@@ -21,10 +23,10 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
 
   return (
     <>
-      <FormHeading>Potrebujeme od Vás zopár informácií</FormHeading>
+      <FormHeading>{t("form.step2Title")}</FormHeading>
 
       <SectionBlock>
-        <SectionLabel>O vás</SectionLabel>
+        <SectionLabel>{t("form.aboutYou")}</SectionLabel>
 
         <NameFieldsRow>
           <Controller
@@ -33,8 +35,8 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
             render={({ field }) => (
               <Input
                 id="first-name"
-                label="Meno"
-                placeholder="Zadajte Vaše meno"
+                label={t("form.firstName")}
+                placeholder={t("form.firstNamePlaceholder")}
                 value={field.value}
                 onChange={field.onChange}
                 onBlur={field.onBlur}
@@ -48,8 +50,8 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
             render={({ field }) => (
               <Input
                 id="last-name"
-                label="Priezvisko"
-                placeholder="Zadajte Vaše priezvisko"
+                label={t("form.lastName")}
+                placeholder={t("form.lastNamePlaceholder")}
                 value={field.value}
                 onChange={field.onChange}
                 onBlur={field.onBlur}
@@ -66,8 +68,8 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
           render={({ field }) => (
             <Input
               id="email"
-              label="E-mailová adresa"
-              placeholder="Zadajte Váš e-mail"
+              label={t("form.email")}
+              placeholder={t("form.emailPlaceholder")}
               type="email"
               value={field.value}
               onChange={field.onChange}
@@ -88,7 +90,7 @@ export function SecondStep({ onBack, onContinue }: SecondStepProps) {
               render={({ field: countryField }) => (
                 <PhoneInput
                   id="phone"
-                  label="Telefónne číslo"
+                  label={t("form.phone")}
                   value={field.value}
                   onChange={field.onChange}
                   onBlur={field.onBlur}

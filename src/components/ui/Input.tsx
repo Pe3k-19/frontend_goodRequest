@@ -3,6 +3,7 @@
 import { useMemo } from "react";
 import { useTheme } from "styled-components";
 import { Input as AntdInput, ConfigProvider } from "antd";
+import { useTranslation } from "react-i18next";
 import { FieldError, FieldLabel, OptionalTag } from "@/styles/componnets";
 
 type InputProps = {
@@ -28,6 +29,7 @@ export function Input({
   type = "text",
   error,
 }: InputProps) {
+  const { t } = useTranslation();
   const theme = useTheme();
 
   const inputTheme = useMemo(
@@ -48,7 +50,7 @@ export function Input({
   return (
     <div>
       <FieldLabel htmlFor={id}>
-        {label} {!required ? <OptionalTag>(Nepovinné)</OptionalTag> : ""}
+        {label} {!required ? <OptionalTag>{t("common.optional")}</OptionalTag> : ""}
       </FieldLabel>
       <ConfigProvider theme={inputTheme}>
         <AntdInput

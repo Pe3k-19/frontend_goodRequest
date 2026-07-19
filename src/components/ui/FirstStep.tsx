@@ -1,6 +1,7 @@
 "use client";
 
 import { Controller, useFormContext } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import { FormHeading } from "@/styles/componnets";
 import type { ContributionFormValues } from "@/lib/validation/contribution";
 import { ToggleButtons } from "./ToggleButtons";
@@ -13,6 +14,7 @@ type FirstStepProps = {
 };
 
 export function FirstStep({ onContinue }: FirstStepProps) {
+  const { t } = useTranslation();
   const {
     control,
     watch,
@@ -24,7 +26,7 @@ export function FirstStep({ onContinue }: FirstStepProps) {
 
   return (
     <>
-      <FormHeading>Vyberte si možnosť, ako chcete pomôcť</FormHeading>
+      <FormHeading>{t("form.step1Title")}</FormHeading>
 
       <Controller
         control={control}
