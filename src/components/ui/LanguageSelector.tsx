@@ -45,6 +45,10 @@ const Root = styled.div`
   gap: ${({ theme }) => theme.spacing(1)};
   padding: ${({ theme }) => theme.spacing(1)};
   border-radius: ${({ theme }) => theme.radii.md};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.lg}) {
+    top: ${({ theme }) => theme.spacing(2)};
+  }
 `;
 
 const LangButton = styled.button<{ $active: boolean }>`
